@@ -22,7 +22,7 @@ pub fn init(log_level: &str) -> Result {
 
 /// Initialize logging builder with its levels.
 fn configure(level: &str) -> Result {
-    let level = level
+    let _level = level
         .parse::<Level>()
         .with_context(|| "failed to parse log level")?;
 
