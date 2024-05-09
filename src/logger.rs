@@ -34,13 +34,13 @@ fn configure(level: &str) -> Result {
     let filtered_layer = tracing_subscriber::fmt::layer()
         .with_writer(std::io::stderr)
         .with_span_events(FmtSpan::CLOSE)
-        .with_ansi(enable_ansi)
-        .with_filter(
-            Targets::default()
-                .with_default(level)
-                .with_target("static_web_server::info", Level::INFO)
-                .with_target("static_web_server::warn", Level::WARN),
-        );
+        .with_ansi(enable_ansi);
+        // .with_filter(
+        //     Targets::default()
+        //         .with_default(level)
+        //         .with_target("static_web_server::info", Level::INFO)
+        //         .with_target("static_web_server::warn", Level::WARN),
+        // );
 
     match tracing_subscriber::registry()
         .with(filtered_layer)
