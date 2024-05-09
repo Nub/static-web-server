@@ -37,8 +37,9 @@ fn configure(level: &str) -> Result {
         .with_ansi(enable_ansi)
         .with_filter(
             Targets::default()
-                .with_default(level)
-                // .with_target("static_web_server::info", Level::INFO)
+                .with_default
+                .with_target("info", Level::INFO)
+               // .with_target("static_web_server::info", Level::INFO)
                 // .with_target("static_web_server::warn", Level::WARN),
         );
 
