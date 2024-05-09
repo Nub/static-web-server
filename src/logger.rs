@@ -21,35 +21,38 @@ pub fn init(log_level: &str) -> Result {
 }
 
 /// Initialize logging builder with its levels.
-fn configure(level: &str) -> Result {
-    let _level = level
-        .parse::<Level>()
-        .with_context(|| "failed to parse log level")?;
+fn configure(_level: &str) -> Result {
+    // let _level = level
+    //     .parse::<Level>()
+    //     .with_context(|| "failed to parse log level")?;
 
-    #[cfg(not(windows))]
-    let enable_ansi = true;
-    #[cfg(windows)]
-    let enable_ansi = false;
+    // #[cfg(not(windows))]
+    // let enable_ansi = true;
+    // #[cfg(windows)]
+    // let enable_ansi = false;
 
-    let filtered_layer = tracing_subscriber::fmt::layer()
-        .with_writer(std::io::stderr)
-        .with_span_events(FmtSpan::CLOSE)
-        .with_ansi(enable_ansi)
-        .with_filter(
-            Targets::default()
-                .with_default
-                .with_target("info", Level::INFO)
-               // .with_target("static_web_server::info", Level::INFO)
-                // .with_target("static_web_server::warn", Level::WARN),
-        );
+    // let filtered_layer = tracing_subscriber::fmt::layer()
+    //     .with_writer(std::io::stderr)
+    //     .with_span_events(FmtSpan::CLOSE)
+    //     .with_ansi(enable_ansi)
+    //     .with_filter(
+    //         Targets::default()
+    //             .with_default
+    //             .with_target("info", Level::INFO)
+    //            // .with_target("static_web_server::info", Level::INFO)
+    //             // .with_target("static_web_server::warn", Level::WARN),
+    //     );
 
-    match tracing_subscriber::registry()
-        .with(filtered_layer)
-        .try_init()
-    {
-        Err(err) => Err(anyhow!(err)),
-        _ => Ok(()),
-    }
+    // match tracing_subscriber::registry()
+    //     .with(filtered_layer)
+    //     .try_init()
+    // {
+    //     Err(err) => Err(anyhow!(err)),
+    //     _ => Ok(()),
+    // }
+    //
+    
+    Ok(())
 }
 
 /// Custom info level macro.
